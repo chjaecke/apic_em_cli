@@ -118,6 +118,8 @@ class CmdAPIC(Cmd):
         print("{:<8}{:<11}{:<22}{:<22}".format(*lines))
 
         for room in rooms:
+            # Fix encoding error of Windows CMD.
+            room["name"] = str(room["name"]).encode('cp850','replace').decode('cp850')
             print("{:<8}{:<11}{:<22}{:<22}".format(room["index"], room["selected"], room["name"], room["id"]))
 
         print()
